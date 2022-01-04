@@ -20,6 +20,7 @@
 		C90596BB278498A90032E3D5 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596BA278498A90032E3D5 /* TranslateViewController.swift */; };
 		C90596BD278498D50032E3D5 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596BC278498D50032E3D5 /* BookmarkViewController.swift */; };
 		C90596BF27849D1E0032E3D5 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596BE27849D1E0032E3D5 /* UIColor+.swift */; };
+		C90596C22784B5210032E3D5 /* SourceTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596C12784B5210032E3D5 /* SourceTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		C90596BA278498A90032E3D5 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		C90596BC278498D50032E3D5 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		C90596BE27849D1E0032E3D5 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		C90596C12784B5210032E3D5 /* SourceTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				C90596B72784960D0032E3D5 /* TabBarController.swift */,
 				C90596BA278498A90032E3D5 /* TranslateViewController.swift */,
 				C90596BC278498D50032E3D5 /* BookmarkViewController.swift */,
+				C90596C12784B5210032E3D5 /* SourceTextViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				C9059682278494840032E3D5 /* AppDelegate.swift in Sources */,
 				C9059684278494840032E3D5 /* SceneDelegate.swift in Sources */,
 				C90596BD278498D50032E3D5 /* BookmarkViewController.swift in Sources */,
+				C90596C22784B5210032E3D5 /* SourceTextViewController.swift in Sources */,
 				C90596BF27849D1E0032E3D5 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
