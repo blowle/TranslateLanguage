@@ -249,5 +249,22 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         sourceLabel.textColor = .label
         
         resultBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        
+//        TranslatorManager.shared.sourceLanguage = sourceLanguage
+//        TranslatorManager.shared.targetLanguage = targetLanguage
+//        TranslatorManager.shared.translate(from: sourceText) { [weak self] translatedText in
+//            self?.resultLabel.text = translatedText
+//        }
+        
+        PapagoNetwork().translate(
+            source: sourceLanguage.translateCode,
+            target: targetLanguage.translateCode,
+            text: sourceText,
+            completionHandler: { [weak self] translatedText in
+                self?.resultLabel.text = translatedText
+            },
+            ErrorHandler: { error in
+                print(error?.localizedDescription)
+            })
     }
 }

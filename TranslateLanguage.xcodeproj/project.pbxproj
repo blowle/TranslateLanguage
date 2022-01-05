@@ -26,6 +26,12 @@
 		C90596C9278573050032E3D5 /* UserDefault+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596C8278573050032E3D5 /* UserDefault+.swift */; };
 		C90596CD2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596CC2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift */; };
 		C90596CF2785DF3F0032E3D5 /* BookmarkTextStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */; };
+		C90596D12786070D0032E3D5 /* PapagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596D02786070D0032E3D5 /* PapagoAPI.swift */; };
+		C90596D4278607790032E3D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596D3278607790032E3D5 /* Constants.swift */; };
+		C90596D62786080B0032E3D5 /* RequestPapagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596D52786080B0032E3D5 /* RequestPapagoAPI.swift */; };
+		C90596D82786084C0032E3D5 /* ResponsePapagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596D72786084C0032E3D5 /* ResponsePapagoAPI.swift */; };
+		C90596DA278609C70032E3D5 /* TranslatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596D9278609C70032E3D5 /* TranslatorManager.swift */; };
+		C90596DC27860B460032E3D5 /* PapagoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596DB27860B460032E3D5 /* PapagoNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,12 @@
 		C90596C8278573050032E3D5 /* UserDefault+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+.swift"; sourceTree = "<group>"; };
 		C90596CC2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTextStackView.swift; sourceTree = "<group>"; };
+		C90596D02786070D0032E3D5 /* PapagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPI.swift; sourceTree = "<group>"; };
+		C90596D3278607790032E3D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C90596D52786080B0032E3D5 /* RequestPapagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPapagoAPI.swift; sourceTree = "<group>"; };
+		C90596D72786084C0032E3D5 /* ResponsePapagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePapagoAPI.swift; sourceTree = "<group>"; };
+		C90596D9278609C70032E3D5 /* TranslatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorManager.swift; sourceTree = "<group>"; };
+		C90596DB27860B460032E3D5 /* PapagoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +133,7 @@
 			children = (
 				C9059681278494840032E3D5 /* AppDelegate.swift */,
 				C9059683278494840032E3D5 /* SceneDelegate.swift */,
+				C90596D2278607130032E3D5 /* Network */,
 				C90596CA278575EC0032E3D5 /* Entities */,
 				C90596C027849D520032E3D5 /* Extensions */,
 				C90596B92784988D0032E3D5 /* Scenes */,
@@ -181,6 +194,9 @@
 			children = (
 				C90596C6278570890032E3D5 /* Bookmark.swift */,
 				C90596C32784DC750032E3D5 /* Language.swift */,
+				C90596D52786080B0032E3D5 /* RequestPapagoAPI.swift */,
+				C90596D3278607790032E3D5 /* Constants.swift */,
+				C90596D72786084C0032E3D5 /* ResponsePapagoAPI.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -193,6 +209,16 @@
 				C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		C90596D2278607130032E3D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C90596D02786070D0032E3D5 /* PapagoAPI.swift */,
+				C90596D9278609C70032E3D5 /* TranslatorManager.swift */,
+				C90596DB27860B460032E3D5 /* PapagoNetwork.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,15 +361,21 @@
 			files = (
 				C90596B82784960D0032E3D5 /* TabBarController.swift in Sources */,
 				C90596BB278498A90032E3D5 /* TranslateViewController.swift in Sources */,
+				C90596DA278609C70032E3D5 /* TranslatorManager.swift in Sources */,
 				C9059682278494840032E3D5 /* AppDelegate.swift in Sources */,
+				C90596D82786084C0032E3D5 /* ResponsePapagoAPI.swift in Sources */,
 				C9059684278494840032E3D5 /* SceneDelegate.swift in Sources */,
+				C90596D12786070D0032E3D5 /* PapagoAPI.swift in Sources */,
 				C90596BD278498D50032E3D5 /* BookmarkViewController.swift in Sources */,
+				C90596D62786080B0032E3D5 /* RequestPapagoAPI.swift in Sources */,
 				C90596C42784DC750032E3D5 /* Language.swift in Sources */,
 				C90596C9278573050032E3D5 /* UserDefault+.swift in Sources */,
 				C90596C22784B5210032E3D5 /* SourceTextViewController.swift in Sources */,
 				C90596BF27849D1E0032E3D5 /* UIColor+.swift in Sources */,
 				C90596C7278570890032E3D5 /* Bookmark.swift in Sources */,
+				C90596D4278607790032E3D5 /* Constants.swift in Sources */,
 				C90596CF2785DF3F0032E3D5 /* BookmarkTextStackView.swift in Sources */,
+				C90596DC27860B460032E3D5 /* PapagoNetwork.swift in Sources */,
 				C90596CD2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
