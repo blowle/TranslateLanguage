@@ -9,6 +9,18 @@ import UIKit
 import SnapKit
 
 final class TranslateViewController: UIViewController {
+    enum TranslateType {
+        case source
+        case target
+        
+        var color: UIColor {
+            switch self {
+            case .source: return .label
+            case .target: return .mainTintColor
+            }
+        }
+    }
+    
     private var sourceLanguage: Language = .ko
     private var targetLanguage: Language = .en
     
@@ -113,10 +125,6 @@ final class TranslateViewController: UIViewController {
 }
 
 private extension TranslateViewController {
-    enum ButtonType {
-        case source
-        case target
-    }
     
     func setupViews() {
         [
@@ -183,7 +191,7 @@ private extension TranslateViewController {
         didLanguageButtonTap(type: .target)
     }
     
-    func didLanguageButtonTap(type: ButtonType) {
+    func didLanguageButtonTap(type: TranslateType) {
         let alertController = UIAlertController(
             title: nil,
             message: nil,

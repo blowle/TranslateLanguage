@@ -24,6 +24,8 @@
 		C90596C42784DC750032E3D5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596C32784DC750032E3D5 /* Language.swift */; };
 		C90596C7278570890032E3D5 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596C6278570890032E3D5 /* Bookmark.swift */; };
 		C90596C9278573050032E3D5 /* UserDefault+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596C8278573050032E3D5 /* UserDefault+.swift */; };
+		C90596CD2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596CC2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift */; };
+		C90596CF2785DF3F0032E3D5 /* BookmarkTextStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		C90596C32784DC750032E3D5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		C90596C6278570890032E3D5 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		C90596C8278573050032E3D5 /* UserDefault+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+.swift"; sourceTree = "<group>"; };
+		C90596CC2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTextStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			children = (
 				C9059681278494840032E3D5 /* AppDelegate.swift */,
 				C9059683278494840032E3D5 /* SceneDelegate.swift */,
+				C90596CA278575EC0032E3D5 /* Entities */,
 				C90596C027849D520032E3D5 /* Extensions */,
 				C90596B92784988D0032E3D5 /* Scenes */,
 				C905968A278494840032E3D5 /* Assets.xcassets */,
@@ -147,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C90596B72784960D0032E3D5 /* TabBarController.swift */,
-				C90596BC278498D50032E3D5 /* BookmarkViewController.swift */,
+				C90596CB2785B7CC0032E3D5 /* Bookmark */,
 				C90596C52784DCB40032E3D5 /* Translation */,
 			);
 			path = Scenes;
@@ -165,12 +170,29 @@
 		C90596C52784DCB40032E3D5 /* Translation */ = {
 			isa = PBXGroup;
 			children = (
-				C90596C32784DC750032E3D5 /* Language.swift */,
 				C90596BA278498A90032E3D5 /* TranslateViewController.swift */,
-				C90596C6278570890032E3D5 /* Bookmark.swift */,
 				C90596C12784B5210032E3D5 /* SourceTextViewController.swift */,
 			);
 			path = Translation;
+			sourceTree = "<group>";
+		};
+		C90596CA278575EC0032E3D5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C90596C6278570890032E3D5 /* Bookmark.swift */,
+				C90596C32784DC750032E3D5 /* Language.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C90596CB2785B7CC0032E3D5 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C90596BC278498D50032E3D5 /* BookmarkViewController.swift */,
+				C90596CC2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift */,
+				C90596CE2785DF3F0032E3D5 /* BookmarkTextStackView.swift */,
+			);
+			path = Bookmark;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +343,8 @@
 				C90596C22784B5210032E3D5 /* SourceTextViewController.swift in Sources */,
 				C90596BF27849D1E0032E3D5 /* UIColor+.swift in Sources */,
 				C90596C7278570890032E3D5 /* Bookmark.swift in Sources */,
+				C90596CF2785DF3F0032E3D5 /* BookmarkTextStackView.swift in Sources */,
+				C90596CD2785D2FA0032E3D5 /* BookmarkCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
