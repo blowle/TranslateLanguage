@@ -66,6 +66,9 @@ final class TranslateViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "bookmark"), for: .normal)
         button.tintColor = UIColor.mainTintColor
+        
+        button.addTarget(self, action: #selector(didBookmarkbuttonTap), for: .touchUpInside)
+        
         return button
     }()
     
@@ -73,8 +76,15 @@ final class TranslateViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
         button.tintColor = UIColor.mainTintColor
+        
+        button.addTarget(self, action: #selector(didCopyButtonTap), for: .touchUpInside)
+        
         return button
     }()
+    
+    @objc func didCopyButtonTap() {
+        UIPasteboard.general.string = resultLabel.text
+    }
     
     private lazy var sourceLabelBaseButton: UIView = {
         let view = UIView()
@@ -90,7 +100,6 @@ final class TranslateViewController: UIViewController {
         let label = UILabel()
         label.text = "텍스트 입력"
         label.textColor = .tertiaryLabel
-        // TODO: sourceLabel에 입력값이 추가되면, placeholder 스타일 해제
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 23.0, weight: .semibold)
         return label
@@ -204,6 +213,24 @@ private extension TranslateViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    @objc func didBookmarkbuttonTap() {
+        guard let sourceText = sourceLabel.text,
+              let translatedText = resultLabel.text,
+              resultBookmarkButton.imageView?.image == UIImage(systemName: "bookmark")
+        else { return }
+        
+        let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
+        let newBookmark: Bookmark = Bookmark(
+            sourceLanguage: sourceLanguage,
+            translatedLanguage: targetLanguage,
+            sourceText: sourceText,
+            translatedText: translatedText)
+        
+        UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks
+        
+        resultBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+    }
+    
 }
 
 extension TranslateViewController: SourceTextViewControllerDelegate {
@@ -212,5 +239,7 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         
         sourceLabel.text = sourceText
         sourceLabel.textColor = .label
+        
+        resultBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
 }
