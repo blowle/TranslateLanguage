@@ -9,31 +9,40 @@ import UIKit
 import SnapKit
 
 final class TranslateViewController: UIViewController {
-    private lazy var sourceLanguagebutton: UIButton = {
+    private var sourceLanguage: Language = .ko
+    private var targetLanguage: Language = .en
+    
+    private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("한국어", for: .normal)
+        button.setTitle(sourceLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didSourceLanguageButtonTap), for: .touchUpInside)
+        
         return button
     }()
     
-    private lazy var targetLanguagebutton: UIButton = {
+    private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영어", for: .normal)
+        button.setTitle(targetLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didTargetLanguageButtonTap), for: .touchUpInside)
+        
         return button
     }()
-    
+
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
         stackView.spacing = 8.0
-        [sourceLanguagebutton, targetLanguagebutton]
+        [sourceLanguageButton, targetLanguageButton]
             .forEach { stackView.addArrangedSubview($0) }
         return stackView
     }()
@@ -95,6 +104,11 @@ final class TranslateViewController: UIViewController {
 }
 
 private extension TranslateViewController {
+    enum ButtonType {
+        case source
+        case target
+    }
+    
     func setupViews() {
         [
             buttonStackView,
@@ -147,10 +161,49 @@ private extension TranslateViewController {
         }
     }
     
-    @objc private func didTapSourceLabelBaseButton() {
+    @objc func didTapSourceLabelBaseButton() {
         let viewController = SourceTextViewController(delegate: self)
         present(viewController, animated: true, completion: nil)
     }
+    
+    @objc func didSourceLanguageButtonTap() {
+        didLanguageButtonTap(type: .source)
+    }
+    
+    @objc func didTargetLanguageButtonTap() {
+        didLanguageButtonTap(type: .target)
+    }
+    
+    func didLanguageButtonTap(type: ButtonType) {
+        let alertController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet)
+        
+        Language.allCases.forEach { lang in
+            let action = UIAlertAction(
+                title: lang.title,
+                style: .default,
+                handler: { [weak self] _ in
+                    switch type {
+                    case .source:
+                        self?.sourceLanguageButton.setTitle(lang.title, for: .normal)
+                        self?.sourceLanguage = lang
+                    case .target:
+                        self?.targetLanguageButton.setTitle(lang.title, for: .normal)
+                        self?.targetLanguage = lang
+                    }
+                }
+            )
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.view.tintColor = .systemPink
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension TranslateViewController: SourceTextViewControllerDelegate {
