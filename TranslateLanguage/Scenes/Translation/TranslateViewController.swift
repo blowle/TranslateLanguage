@@ -21,12 +21,11 @@ final class TranslateViewController: UIViewController {
         }
     }
     
-    private var sourceLanguage: Language = .ko
-    private var targetLanguage: Language = .en
+    private var translateManager = TranslatorManager.shared
     
     private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle(sourceLanguage.title, for: .normal)
+        button.setTitle(translateManager.sourceLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
@@ -39,7 +38,7 @@ final class TranslateViewController: UIViewController {
     
     private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle(targetLanguage.title, for: .normal)
+        button.setTitle(translateManager.targetLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
@@ -205,10 +204,10 @@ private extension TranslateViewController {
                     switch type {
                     case .source:
                         self?.sourceLanguageButton.setTitle(lang.title, for: .normal)
-                        self?.sourceLanguage = lang
+                        self?.translateManager.sourceLanguage = lang
                     case .target:
                         self?.targetLanguageButton.setTitle(lang.title, for: .normal)
-                        self?.targetLanguage = lang
+                        self?.translateManager.targetLanguage = lang
                     }
                 }
             )
@@ -229,8 +228,8 @@ private extension TranslateViewController {
         
         let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
         let newBookmark: Bookmark = Bookmark(
-            sourceLanguage: sourceLanguage,
-            translatedLanguage: targetLanguage,
+            sourceLanguage: translateManager.sourceLanguage,
+            translatedLanguage: translateManager.targetLanguage,
             sourceText: sourceText,
             translatedText: translatedText)
         
@@ -250,18 +249,18 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         
         resultBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         
-//        TranslatorManager.shared.sourceLanguage = sourceLanguage
-//        TranslatorManager.shared.targetLanguage = targetLanguage
 //        TranslatorManager.shared.translate(from: sourceText) { [weak self] translatedText in
 //            self?.resultLabel.text = translatedText
 //        }
         
         PapagoNetwork().translate(
-            source: sourceLanguage.translateCode,
-            target: targetLanguage.translateCode,
+            source: translateManager.sourceLanguage.translateCode,
+            target: translateManager.targetLanguage.translateCode,
             text: sourceText,
             completionHandler: { [weak self] translatedText in
-                self?.resultLabel.text = translatedText
+                DispatchQueue.main.async { [weak self] in
+                    self?.resultLabel.text = translatedText
+                }
             },
             ErrorHandler: { error in
                 print(error?.localizedDescription)

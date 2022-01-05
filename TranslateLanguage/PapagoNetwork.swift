@@ -30,10 +30,20 @@ class PapagoNetwork {
             return ErrorHandler(URLError(.badURL))
         }
         
+        
+        let json = [
+            "source": source,
+            "target": target,
+            "text": text
+        ]
+        let data = try? JSONSerialization.data(withJSONObject: json, options: []) 
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.httpBody = data
         
         let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
             "X-Naver-Client-Id": Constants.clientID,
             "X-Naver-Client-Secret": Constants.clientSecret,
         ]
@@ -48,7 +58,7 @@ class PapagoNetwork {
                 ErrorHandler(error)
                 return
             }
-            
+
             do {
                 let result = try JSONDecoder().decode(ResponsePapagoAPI.self, from: data!)
                 completionHandler(result.translatedText)

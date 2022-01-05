@@ -20,11 +20,11 @@ struct PapagoAPI {
         components.host = PapagoAPI.host
         components.path = PapagoAPI.path
         
-        components.queryItems = [
-            URLQueryItem(name: "source", value: requestModel.source),
-            URLQueryItem(name: "target", value: requestModel.target),
-            URLQueryItem(name: "text", value: requestModel.text)
-        ]
+//        components.queryItems = [
+//            URLQueryItem(name: "source", value: requestModel.source),
+//            URLQueryItem(name: "target", value: requestModel.target),
+//            URLQueryItem(name: "text", value: requestModel.text)
+//        ]
         
         return components
     }
