@@ -30,7 +30,7 @@ final class BookmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "즐겨찾기"
+        navigationItem.title = LocalizedString.bookmark
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .secondarySystemBackground
         

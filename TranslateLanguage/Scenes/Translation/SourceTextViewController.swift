@@ -12,7 +12,7 @@ protocol SourceTextViewControllerDelegate: AnyObject {
 }
 
 final class SourceTextViewController: UIViewController {
-    private let placeholderText = "텍스트 입력"
+    private let placeholderText = LocalizedString.enterText
     private weak var delegate: SourceTextViewControllerDelegate?
     
     private lazy var textView: UITextView = {
